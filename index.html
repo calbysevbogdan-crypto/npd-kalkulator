@@ -1,136 +1,78 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <meta name="yandex-verification" content="0b963ea2c488b1a3" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Калькулятор налога для самозанятых 2026 — расчёт НПД онлайн бесплатно</title>
-    <meta name="description" content="Бесплатный онлайн-калькулятор налога для самозанятых (НПД) на 2026 год. Рассчитайте налог 4% и 6% за 10 секунд. Сравнение с ИП и НДФЛ. Актуальные ставки.">
-    <meta name="keywords" content="калькулятор самозанятого, расчёт налога НПД, НПД калькулятор онлайн, сколько платить самозанятому, налог для самозанятых 2026, калькулятор НПД 4% 6%">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://ТВОЙ_ЮЗЕРНЕЙМ.github.io/npd-kalkulator/">
-    
-    <!-- Open Graph (для соцсетей) -->
-    <meta property="og:title" content="Калькулятор налога для самозанятых 2026">
-    <meta property="og:description" content="Бесплатный расчёт НПД онлайн. Узнайте налог за 10 секунд.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ТВОЙ_ЮЗЕРНЕЙМ.github.io/npd-kalkulator/">
-    
+    <title>Калькулятор налога для самозанятых 2026</title>
+    <meta name="description" content="Бесплатный онлайн-калькулятор налога для самозанятых (НПД). Рассчитайте налог за 10 секунд.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f4f8; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
-        .container { max-width: 550px; width: 100%; background: white; border-radius: 24px; padding: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.08); }
-        h1 { font-size: 26px; color: #1e293b; margin-bottom: 8px; text-align: center; line-height: 1.3; }
-        p.subtitle { text-align: center; color: #64748b; margin-bottom: 25px; font-size: 15px; }
-        .tabs { display: flex; background: #e2e8f0; border-radius: 14px; padding: 5px; margin-bottom: 22px; }
-        .tab { flex: 1; padding: 14px; text-align: center; border-radius: 11px; cursor: pointer; font-weight: 600; font-size: 14px; border: none; background: transparent; color: #64748b; }
-        .tab.active { background: white; box-shadow: 0 3px 10px rgba(0,0,0,0.08); color: #1e293b; }
-        label { font-weight: 600; color: #334155; display: block; margin-bottom: 8px; font-size: 15px; }
-        input[type="number"] { width: 100%; padding: 16px; border: 2px solid #e2e8f0; border-radius: 14px; font-size: 20px; margin-bottom: 22px; outline: none; }
+        body { font-family: Arial, sans-serif; background: #f0f4f8; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+        .container { max-width: 500px; width: 100%; background: white; border-radius: 20px; padding: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        h1 { font-size: 24px; color: #1e293b; margin-bottom: 10px; text-align: center; }
+        p.subtitle { text-align: center; color: #64748b; margin-bottom: 25px; font-size: 14px; }
+        .tabs { display: flex; background: #e2e8f0; border-radius: 12px; padding: 4px; margin-bottom: 20px; }
+        .tab { flex: 1; padding: 12px; text-align: center; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 14px; border: none; background: transparent; color: #64748b; }
+        .tab.active { background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.1); color: #1e293b; }
+        label { font-weight: 600; color: #334155; display: block; margin-bottom: 8px; font-size: 14px; }
+        input[type="number"] { width: 100%; padding: 15px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 18px; margin-bottom: 20px; outline: none; }
         input[type="number"]:focus { border-color: #3b82f6; }
-        .result { background: #eff6ff; padding: 22px; border-radius: 18px; margin-bottom: 22px; }
-        .result-label { font-size: 14px; color: #3b82f6; font-weight: 600; }
-        .result-value { font-size: 40px; font-weight: 700; color: #1e293b; }
-        .result-detail { font-size: 13px; color: #64748b; margin-top: 6px; }
-        .comparison { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 22px; }
-        .comp-item { background: #f8fafc; padding: 12px; border-radius: 12px; text-align: center; }
-        .comp-label { font-size: 11px; color: #64748b; }
-        .comp-value { font-size: 16px; font-weight: 700; color: #1e293b; }
-        .lead-section { background: #1e293b; color: white; padding: 25px; border-radius: 18px; text-align: center; }
-        .lead-section h2 { font-size: 19px; margin-bottom: 8px; }
-        .lead-section p { font-size: 13px; color: #94a3b8; margin-bottom: 16px; }
+        .result { background: #eff6ff; padding: 20px; border-radius: 16px; margin-bottom: 20px; }
+        .result-label { font-size: 13px; color: #3b82f6; font-weight: 600; }
+        .result-value { font-size: 36px; font-weight: 700; color: #1e293b; }
+        .result-detail { font-size: 12px; color: #64748b; margin-top: 5px; }
+        .lead-section { background: #1e293b; color: white; padding: 25px; border-radius: 16px; text-align: center; }
+        .lead-section h2 { font-size: 18px; margin-bottom: 8px; }
+        .lead-section p { font-size: 13px; color: #94a3b8; margin-bottom: 15px; }
         input[type="tel"] { width: 100%; padding: 14px; border-radius: 12px; border: none; font-size: 16px; text-align: center; margin-bottom: 10px; outline: none; }
-        button { width: 100%; padding: 15px; background: #2AABEE; color: white; border: none; border-radius: 12px; font-size: 17px; font-weight: 600; cursor: pointer; }
+        button { width: 100%; padding: 14px; background: #2AABEE; color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; }
         button:hover { background: #229ED9; }
-        button:disabled { opacity: 0.6; }
-        #formMessage { margin-top: 12px; font-size: 14px; font-weight: 600; min-height: 22px; }
+        button:disabled { opacity: 0.6; cursor: not-allowed; }
+        #formMessage { margin-top: 10px; font-size: 13px; font-weight: 600; min-height: 20px; }
         .success { color: #4ade80; }
         .error { color: #f87171; }
-        .features { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 22px; font-size: 13px; color: #475569; }
-        .features span { display: flex; align-items: center; gap: 6px; background: #f1f5f9; padding: 8px 12px; border-radius: 10px; }
-        .badge { display: inline-block; background: #dbeafe; color: #1e40af; padding: 4px 11px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-left: 6px; }
-        .faq { margin-top: 25px; padding-top: 20px; border-top: 1px solid #e2e8f0; }
-        .faq h3 { font-size: 16px; color: #1e293b; margin-bottom: 10px; }
-        .faq details { margin-bottom: 8px; }
-        .faq summary { font-weight: 600; cursor: pointer; font-size: 14px; color: #334155; }
-        .faq p { font-size: 13px; color: #64748b; margin-top: 5px; padding-left: 10px; }
-        footer { text-align: center; margin-top: 20px; font-size: 11px; color: #94a3b8; }
-        footer a { color: #64748b; }
+        .features { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 20px; font-size: 12px; color: #64748b; }
+        .features span { display: flex; align-items: center; gap: 5px; }
+        .badge { display: inline-block; background: #dbeafe; color: #1e40af; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-left: 5px; }
     </style>
 </head>
 <body>
-    <main class="container" itemscope itemtype="https://schema.org/WebApplication">
-        <meta itemprop="applicationCategory" content="FinanceApplication">
-        <meta itemprop="name" content="Калькулятор НПД">
+    <div class="container">
+        <h1>🧮 Калькулятор НПД</h1>
+        <p class="subtitle">Для самозанятых • Актуально на 2026 год</p>
         
-        <h1 itemprop="headline">🧮 Калькулятор налога для самозанятых</h1>
-        <p class="subtitle">Расчёт НПД • Актуальные ставки 2026 года</p>
-        
-        <div class="tabs" role="tablist">
-            <button class="tab active" role="tab" onclick="switchTab(0.04, this)">Физ. лица <span class="badge">4%</span></button>
-            <button class="tab" role="tab" onclick="switchTab(0.06, this)">Юр. лица / ИП <span class="badge">6%</span></button>
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab(0.04, this)">Физ. лица <span class="badge">4%</span></button>
+            <button class="tab" onclick="switchTab(0.06, this)">Юр. лица <span class="badge">6%</span></button>
         </div>
         
-        <label for="incomeInput">Сумма дохода, ₽</label>
-        <input type="number" id="incomeInput" name="income" placeholder="Например: 150000" oninput="calculate()" aria-label="Сумма дохода в рублях">
+        <label>Сумма дохода, ₽</label>
+        <input type="number" id="incomeInput" placeholder="Например: 150000" oninput="calculate()">
         
         <div class="result">
-            <div class="result-label">💰 Налог к уплате</div>
+            <div class="result-label">Налог к уплате</div>
             <div class="result-value" id="taxResult">0 ₽</div>
-            <div class="result-detail" id="detail">Введите сумму дохода для расчёта</div>
-        </div>
-        
-        <div class="comparison">
-            <div class="comp-item">
-                <div class="comp-label">НПД</div>
-                <div class="comp-value" id="npdVal" style="color:#3b82f6;">0 ₽</div>
-            </div>
-            <div class="comp-item">
-                <div class="comp-label">УСН 6%</div>
-                <div class="comp-value" id="usnVal">0 ₽</div>
-            </div>
-            <div class="comp-item">
-                <div class="comp-label">НДФЛ 13%</div>
-                <div class="comp-value" id="ndflVal">0 ₽</div>
-            </div>
+            <div class="result-detail" id="detail">Введите сумму дохода</div>
         </div>
         
         <div class="features">
-            <span>✅ Без отчётности</span>
+            <span>✅ Без отчетности</span>
             <span>✅ Нет онлайн-кассы</span>
-            <span>✅ Ставка 4% или 6%</span>
-            <span>✅ Легко совмещать с работой</span>
+            <span>✅ Ставка 4-6%</span>
+            <span>✅ Легко совмещать</span>
         </div>
         
-        <div class="lead-section" id="consultation">
-            <h2>📞 Бесплатная консультация</h2>
-            <p>Оставьте номер — эксперты помогут с налогами</p>
+        <div class="lead-section">
+            <h2>📞 Нужна консультация?</h2>
+            <p>Оставьте номер — юристы свяжутся с вами бесплатно</p>
             <form onsubmit="sendLead(event)">
-                <input type="tel" id="phoneInput" name="phone" placeholder="+7 (999) 123-45-67" required aria-label="Номер телефона">
+                <input type="tel" id="phoneInput" placeholder="+7 (999) 123-45-67" required>
                 <button type="submit" id="submitBtn">Получить консультацию</button>
             </form>
             <div id="formMessage"></div>
         </div>
-        
-        <div class="faq" itemscope itemtype="https://schema.org/FAQPage">
-            <h3>Частые вопросы</h3>
-            <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <summary itemprop="name">Какой налог у самозанятых в 2026 году?</summary>
-                <p itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><span itemprop="text">4% с доходов от физлиц и 6% с доходов от юрлиц и ИП.</span></p>
-            </details>
-            <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <summary itemprop="name">Нужно ли платить страховые взносы?</summary>
-                <p itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><span itemprop="text">Нет, взносы в ПФР добровольные. Обязательный платёж — только налог с дохода.</span></p>
-            </details>
-            <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <summary itemprop="name">Какой максимальный доход самозанятого?</summary>
-                <p itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><span itemprop="text">2,4 млн рублей в год. При превышении лимита нужно регистрировать ИП.</span></p>
-            </details>
-        </div>
-        
-        <footer>
-            <p>© 2026 НПД Калькулятор. Информация ознакомительная. <a href="#consultation">Консультация специалиста</a></p>
-        </footer>
-    </main>
+    </div>
 
     <script>
         let currentRate = 0.04;
@@ -151,9 +93,6 @@
             const tax = income * currentRate;
             document.getElementById('taxResult').textContent = format(tax);
             document.getElementById('detail').textContent = format(income) + ' × ' + (currentRate * 100) + '% = ' + format(tax);
-            document.getElementById('npdVal').textContent = format(tax);
-            document.getElementById('usnVal').textContent = format(income * 0.06);
-            document.getElementById('ndflVal').textContent = format(income * 0.13);
         }
 
         function sendLead(event) {
@@ -161,17 +100,24 @@
             const phone = document.getElementById('phoneInput').value.trim();
             const msgDiv = document.getElementById('formMessage');
             const btn = document.getElementById('submitBtn');
+
             if (!phone) return;
+
             btn.disabled = true;
             btn.textContent = 'Отправка...';
+
+            // Имитация отправки (всегда успешно)
             setTimeout(function() {
                 msgDiv.className = 'success';
-                msgDiv.textContent = '✅ Заявка принята! Скоро свяжемся.';
+                msgDiv.textContent = '✅ Заявка принята! Мы свяжемся с вами.';
                 document.getElementById('phoneInput').value = '';
                 btn.disabled = false;
                 btn.textContent = 'Получить консультацию';
+                
+                // Сохраняем заявку в памяти (для демонстрации)
                 console.log('НОВАЯ ЗАЯВКА: ' + phone);
-            }, 700);
+                console.log('(Когда сайт будет опубликован, заявки будут приходить в Google Таблицу)');
+            }, 800);
         }
     </script>
 </body>
