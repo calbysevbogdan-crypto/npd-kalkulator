@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор налога для самозанятых 2026</title>
+    <meta name="description" content="Бесплатный онлайн-калькулятор налога для самозанятых (НПД). Рассчитайте налог за 10 секунд.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f0f4f8; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+        .container { max-width: 500px; width: 100%; background: white; border-radius: 20px; padding: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        h1 { font-size: 24px; color: #1e293b; margin-bottom: 10px; text-align: center; }
+        p.subtitle { text-align: center; color: #64748b; margin-bottom: 25px; font-size: 14px; }
+        .tabs { display: flex; background: #e2e8f0; border-radius: 12px; padding: 4px; margin-bottom: 20px; }
+        .tab { flex: 1; padding: 12px; text-align: center; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 14px; border: none; background: transparent; color: #64748b; }
+        .tab.active { background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.1); color: #1e293b; }
+        label { font-weight: 600; color: #334155; display: block; margin-bottom: 8px; font-size: 14px; }
+        input[type="number"] { width: 100%; padding: 15px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 18px; margin-bottom: 20px; outline: none; }
+        input[type="number"]:focus { border-color: #3b82f6; }
+        .result { background: #eff6ff; padding: 20px; border-radius: 16px; margin-bottom: 20px; }
+        .result-label { font-size: 13px; color: #3b82f6; font-weight: 600; }
+        .result-value { font-size: 36px; font-weight: 700; color: #1e293b; }
+        .result-detail { font-size: 12px; color: #64748b; margin-top: 5px; }
+        .lead-section { background: #1e293b; color: white; padding: 25px; border-radius: 16px; text-align: center; }
+        .lead-section h2 { font-size: 18px; margin-bottom: 8px; }
+        .lead-section p { font-size: 13px; color: #94a3b8; margin-bottom: 15px; }
+        input[type="tel"] { width: 100%; padding: 14px; border-radius: 12px; border: none; font-size: 16px; text-align: center; margin-bottom: 10px; outline: none; }
+        button { width: 100%; padding: 14px; background: #2AABEE; color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; }
+        button:hover { background: #229ED9; }
+        button:disabled { opacity: 0.6; cursor: not-allowed; }
+        #formMessage { margin-top: 10px; font-size: 13px; font-weight: 600; min-height: 20px; }
+        .success { color: #4ade80; }
+        .error { color: #f87171; }
+        .features { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 20px; font-size: 12px; color: #64748b; }
+        .features span { display: flex; align-items: center; gap: 5px; }
+        .badge { display: inline-block; background: #dbeafe; color: #1e40af; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-left: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧮 Калькулятор НПД</h1>
+        <p class="subtitle">Для самозанятых • Актуально на 2026 год</p>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab(0.04, this)">Физ. лица <span class="badge">4%</span></button>
+            <button class="tab" onclick="switchTab(0.06, this)">Юр. лица <span class="badge">6%</span></button>
+        </div>
+        
+        <label>Сумма дохода, ₽</label>
+        <input type="number" id="incomeInput" placeholder="Например: 150000" oninput="calculate()">
+        
+        <div class="result">
+            <div class="result-label">Налог к уплате</div>
+            <div class="result-value" id="taxResult">0 ₽</div>
+            <div class="result-detail" id="detail">Введите сумму дохода</div>
+        </div>
+        
+        <div class="features">
+            <span>✅ Без отчетности</span>
+            <span>✅ Нет онлайн-кассы</span>
+            <span>✅ Ставка 4-6%</span>
+            <span>✅ Легко совмещать</span>
+        </div>
+        
+        <div class="lead-section">
+            <h2>📞 Нужна консультация?</h2>
+            <p>Оставьте номер — юристы свяжутся с вами бесплатно</p>
+            <form onsubmit="sendLead(event)">
+                <input type="tel" id="phoneInput" placeholder="+7 (999) 123-45-67" required>
+                <button type="submit" id="submitBtn">Получить консультацию</button>
+            </form>
+            <div id="formMessage"></div>
+        </div>
+    </div>
+
+    <script>
+        let currentRate = 0.04;
+
+        function switchTab(rate, btn) {
+            currentRate = rate;
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+            calculate();
+        }
+
+        function format(n) {
+            return Math.round(n).toLocaleString('ru-RU') + ' ₽';
+        }
+
+        function calculate() {
+            const income = parseFloat(document.getElementById('incomeInput').value) || 0;
+            const tax = income * currentRate;
+            document.getElementById('taxResult').textContent = format(tax);
+            document.getElementById('detail').textContent = format(income) + ' × ' + (currentRate * 100) + '% = ' + format(tax);
+        }
+
+        function sendLead(event) {
+            event.preventDefault();
+            const phone = document.getElementById('phoneInput').value.trim();
+            const msgDiv = document.getElementById('formMessage');
+            const btn = document.getElementById('submitBtn');
+
+            if (!phone) return;
+
+            btn.disabled = true;
+            btn.textContent = 'Отправка...';
+
+            // Имитация отправки (всегда успешно)
+            setTimeout(function() {
+                msgDiv.className = 'success';
+                msgDiv.textContent = '✅ Заявка принята! Мы свяжемся с вами.';
+                document.getElementById('phoneInput').value = '';
+                btn.disabled = false;
+                btn.textContent = 'Получить консультацию';
+                
+                // Сохраняем заявку в памяти (для демонстрации)
+                console.log('НОВАЯ ЗАЯВКА: ' + phone);
+                console.log('(Когда сайт будет опубликован, заявки будут приходить в Google Таблицу)');
+            }, 800);
+        }
+    </script>
+</body>
+</html>
